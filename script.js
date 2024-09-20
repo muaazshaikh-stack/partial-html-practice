@@ -1,3 +1,5 @@
+var boxCount = 0;
+
 document.addEventListener("DOMContentLoaded", () => {
   // Load and append the initial box when the "Add Box" button is clicked
   document
@@ -13,9 +15,16 @@ function createNewBox() {
   fetch("box-component/box.html")
     .then((response) => response.text())
     .then((htmlData) => {
+      boxCount++;
+
+      // Create DOM element for box html
       const domParser = new DOMParser();
       const htmlDocument = domParser.parseFromString(htmlData, "text/html");
 
+      const label = htmlDocument.querySelector("div.color label");
+      label.textContent = boxCount;
+
+      // Add box DOM element in main body
       boxContainer.appendChild(htmlDocument.body.firstChild);
 
       // Add partail HTML data of box.html in main HTML page

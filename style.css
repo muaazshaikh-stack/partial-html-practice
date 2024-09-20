@@ -21,3 +21,8 @@ button:hover {
   flex-wrap: wrap;
   margin-top: 20px;
 }
+
+.flex-row {
+  display: flex;
+  flex-direction: row;
+}
